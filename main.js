@@ -12,10 +12,10 @@ request.onload = function () {
   $.each(data, function(i, status) {
     statusHTML += '<tr>';
     statusHTML += '<td>' + status.id + '</td>';
-    statusHTML += '<td>' + '<a href="' + status.html_url +'" style="text-decoration:none;">'+ status.name+'</a>'+ '</td>';
+    statusHTML += '<td>' + '<a target="_blank" href="' + status.html_url +'" style="text-decoration:none;">'+ status.name+'</a>'+ '</td>';
     statusHTML += '<td>' + status.language + '</td>';
     if(status.has_pages){
-      statusHTML += '<td>' + '<a href="https://mdjannatulhasan.github.io/' + status.name +'" style="text-decoration:none;">'+ "Click Here"+'</a>' + '</td>';
+      statusHTML += '<td>' + '<a target="_blank" href="https://mdjannatulhasan.github.io/' + status.name +'" style="text-decoration:none;">'+ "Click Here"+'</a>' + '</td>';
     } else{
       statusHTML += '<td>' + "No Page Yet" + '</td>';
     }
