@@ -11,7 +11,7 @@ request.onload = function () {
   var statusHTML = '';
   $.each(data, function(i, status) {
     statusHTML += '<tr>';
-    statusHTML += '<td>' + status.id + '</td>';
+    statusHTML += '<td>' + (i+1) + '</td>';
     statusHTML += '<td>' + '<a target="_blank" href="' + status.html_url +'" style="text-decoration:none;">'+ status.name+'</a>'+ '</td>';
     statusHTML += '<td>' + status.language + '</td>';
     if(status.has_pages){
