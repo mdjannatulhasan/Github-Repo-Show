@@ -41,10 +41,10 @@
             </div>
         </div>
     </section>
-    <section class="testRepo "  style="padding-bottom: 80px;">
+    <section class="testRepo">
         <div class="container">
-            <div id="test">
-                <a class="h3" href="next.html">See more</a>
+            <div id="test"  style="padding-bottom: 80px;">
+                <a class="h3" href="index.html">Go To Prev</a>
             </div>
         </div>
     </section>
@@ -59,7 +59,41 @@
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     
     <!-- custom js -->
-    <script src="main.js"></script>
-    
-</body>
-</html>
+    <script>
+        // Create a request variable and assign a new XMLHttpRequest object to it.
+        var request = new XMLHttpRequest();
+        
+        // Open a new connection, using the GET request on the URL endpoint
+        request.open('GET', 'https://api.github.com/users/mdjannatulhasan/repos?page=2', true);
+        
+        request.onload = function () {
+            // Begin accessing JSON data here
+            var data = JSON.parse(this.response);
+            
+            var statusHTML = '';
+            $.each(data, function(i, status) {
+                statusHTML += '<tr>';
+                    statusHTML += '<td>' + (i+1) + '</td>';
+                    statusHTML += '<td>' + '<a target="_blank" href="' + status.html_url +'" style="text-decoration:none;">'+ status.name+'</a>'+ '</td>';
+                    statusHTML += '<td>' + status.language + '</td>';
+                    if(status.has_pages){
+                        statusHTML += '<td>' + '<a target="_blank" href="https://mdjannatulhasan.github.io/' + status.name +'" style="text-decoration:none;">'+ "Click Here"+'</a>' + '</td>';
+                    } else{
+                        statusHTML += '<td>' + "No Page Yet" + '</td>';
+                    }
+                    // statusHTML += '<td>' + status.has_pages + '</td>';
+                    statusHTML += '</tr>';
+                    // document.getElementById("test").innerHTML = '<td>' +  status.has_pages + '</td>';
+                    
+                });
+                $('tbody').html(statusHTML);
+                
+            }
+            
+            // Send request
+            request.send();
+            
+        </script>
+        
+    </body>
+    </html>
